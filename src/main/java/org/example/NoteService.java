@@ -27,6 +27,11 @@ public class NoteService {
     public void deleteNoteById(Long id) {
         noteRepository.deleteById(id);
     }
-}
 
-// have you ever read lovecraft? this shi is horrific, can't sleep no more.
+    public Note updateNoteById(Long id, Note newNoteData) {
+        Note existingNote = getNoteById(id);
+        existingNote.setTitle(newNoteData.getTitle());
+        existingNote.setContent(newNoteData.getContent());
+        return noteRepository.save(existingNote);
+    }
+}
